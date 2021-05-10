@@ -13,9 +13,12 @@ Algorithm = Scrypt Algorithm (Bitcoin uses SHA256; it's slow and less safe)
 
 This is the plan of my coin. Now i need some code baby. I will not write it from scratch. I have taken LiteCoin's code as refwerence. 
 
-Now as per our plan we needd to make few changes in the code of the coin.I made the following changes in the code of the coin.
-+  amount.h :  number of coins
-+ validation.cpp :  
+Now as per our plan we needd to make few changes in the code of the coin. The changes will be made in following parts 
+
+Part 1 : for changes as per our plan
++ amount.h
++ validation.cpp
++ qt/bitcoinunits.cpp
 
 The above is metadata of coin 
 
@@ -23,6 +26,7 @@ Data required for Genesis Block :-
 + TimeStamp Message 
 + Rewards Coin 
 + Current TimeStamp
-+ Pub Secret Key Time Stamp	   : 1620628204
++ Pub Secret Key Time Stamp
 
 The Geneis Block can be created from this link :- https://newtum.com/material/cryptocurrency/
+
