@@ -1,0 +1,27 @@
+NEWTUM : Create your own crypto-currency 
+
+1.) Planning your coin 
+Name of Coin =  KrisCoin
+Symbol of coin = KRIS 
+Public Address = K
+Max Coins = 1000 millions
+Mining Rewards = 100
+Halving Interval = 2 years
+Block Interval = 1 min
+Pre-Mined Coins = 1%
+Algorithm = Scrypt Algorithm (Bitcoin uses SHA256; it's slow and less safe) 
+
+This is the plan of my coin. Now i need some code baby. I will not write it from scratch. I have taken LiteCoin's code as refwerence. 
+
+Now as per our plan we needd to make few changes in the code of the coin.I made the following changes in the code of the coin.
++  amount.h :  number of coins
++ validation.cpp :  
+
+The above is metadata of coin 
+
+Data required for Genesis Block :- 
++ TimeStamp Message 
++ Rewards Coin 
++ Current TimeStamp
++ Pub Secret Key Time Stamp	   : 1620628204
+
