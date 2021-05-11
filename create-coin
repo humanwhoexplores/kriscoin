@@ -30,3 +30,18 @@ Data required for Genesis Block :-
 
 The Geneis Block can be created from this link :- https://newtum.com/material/cryptocurrency/
 
+=====
+After making the changes in the code :-  
+i need to deploy it to the server , I am hostinh the server on 2 ec2 nodes 
+
++ I have 2 ec2 :  2 vCPUs, 25 GB sotorage, 4 GB RAM  : SPAWN UBUNTU 18.04 ONLY
+
+There are various stages of running commands, building code
+
+Part 1 :-  Building the coin
+https://blog.newtum.com/commands-to-build-the-coin/      
+
++ On the node , run these following commands 
+-> apt-get update
+-> apt-get install build-essential
+=====
