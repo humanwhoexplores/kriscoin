@@ -1,15 +1,7 @@
 NEWTUM : Create your own crypto-currency 
 
 1.) Planning your coin 
-Name of Coin =  kriscoin
-Symbol of coin = KRIS 
-Public Address = K
-Max Coins = 1000 millions
-Mining Rewards = 100
-Halving Interval = 2 years
-Block Interval = 1 min
-Pre-Mined Coins = 1%
-Algorithm = Scrypt Algorithm (Bitcoin uses SHA256; it's slow and less safe) 
+c
 
 This is the plan of my coin. Now i need some code baby. I will not write it from scratch. I have taken LiteCoin's code as refwerence. 
 
@@ -45,3 +37,140 @@ https://blog.newtum.com/commands-to-build-the-coin/
 -> apt-get update
 -> apt-get install build-essential
 =====
+
+
+=======
+Details of my first coin build 
+
+Once the server was up & running 
+
+ubuntu@ip-172-31-39-161:~/kriscoin/kriscoin/src$ ./kriscoin-cli getinfo
+{
+  "version": 140200,
+  "protocolversion": 70015,
+  "walletversion": 130000,
+  "balance": 0.00000000,
+  "blocks": 0,
+  "timeoffset": 0,
+  "connections": 0,
+  "proxy": "",
+  "difficulty": 0.000244140625,
+  "testnet": false,
+  "keypoololdest": 1620809956,
+  "keypoolsize": 101,
+  "paytxfee": 0.00000000,
+  "relayfee": 0.00100000,
+  "errors": ""
+}
+ubuntu@ip-172-31-39-161:~/kriscoin/kriscoin/src$ ./kriscoin-cli generate 1 
+[
+  "e6e9a1211eb9aa8fd0bd34a8a0edbb2d57a8452acdb1b11f5be15d8c5380288e"
+]
+
+ubuntu@ip-172-31-39-161:~/kriscoin/kriscoin/src$ ./kriscoin-cli listtransactions
+[
+  {
+    "account": "",
+    "address": "K898kC9jRaKjgGkNQpzhk3Hfy2Zoc8mKSR",
+    "category": "immature",
+    "amount": 0.10000000,
+    "vout": 0,
+    "confirmations": 1,
+    "generated": true,
+    "blockhash": "e6e9a1211eb9aa8fd0bd34a8a0edbb2d57a8452acdb1b11f5be15d8c5380288e",
+    "blockindex": 0,
+    "blocktime": 1620815075,
+    "txid": "49b2d151382a11205eded88d5d2bec04e935e98a201bb7021bb4d4bb20d49b60",
+    "walletconflicts": [
+    ],
+    "time": 1620815075,
+    "timereceived": 1620815081,
+    "bip125-replaceable": "no"
+  }
+]
+
+Q.) The above is the first block ? Why the reward is so low ? Shouldn't it be 1% of the coins : 10 million coins ?
+Reason is a typo in the code
+ ++++
+ https://github.com/krisalpha/kriscoin/commit/50eda110db95b350ea291a1d8c92a2114d940369
+
+ CAmount nSubsidy;
+
+    if (nHeight == 1)
+        nSubsidy = 10000000;     :--->> should be  10000000 * COIN
+    else
+        nSubsidy = 100 * COIN;
+ ++++ 
+
+
+Q.) Nodes are not synching : bta kyaa ho sakta hai ? 
++ security groups are fine 
++ solution: update the ip of the node in 'chainparams.cpp' 
+====
+        vSeeds.push_back(CDNSSeedData("3.143.41.253", "3.143.41.253", true));
+        vSeeds.push_back(CDNSSeedData("18.221.47.186", "18.221.47.186", true));
+====
+
+& aftert that it was good, this is the output we should get on both nodes. 
+===
+ubuntu@ip-172-31-39-161:~/kriscoin/kriscoin/src$ ./kriscoin-cli getinfo
+{
+  "version": 140200,
+  "protocolversion": 70015,
+  "walletversion": 130000,
+  "balance": 0.00000000,
+  "blocks": 1,
+  "timeoffset": 0, 
+  "connections": 1,
+  "proxy": "",
+  "difficulty": 0.000244140625,
+  "testnet": false,
+  "keypoololdest": 1620842696,
+  "keypoolsize": 100,
+  "paytxfee": 0.00000000,
+  "relayfee": 0.00100000,
+  "errors": ""
+}
+===
+->> if anyone node makes the block : the block count increases
+->> If one node goes down then the contents are automatically synched
+->> even after shutting both nodes : the content still persists, looks like it is storing in a file
+
+
+
+-->> https://en.bitcoin.it/wiki/Original_Bitcoin_client/API_calls_list  
+all the API calls to be used with the cli
+
+Q.) How tfo incorporate the changes here ? 
++ to get this i made 3 set of changes :- HOST-LEVEL changes,  updating lib etc. 
++ Install : berkerly DB : fine 
++ Cloning the code and complining : bro isko maar : remove the conf file and code file and redownload it
+=======
+
+
+=======
+Why d
+
+=======
+
+
+
+=======
+Finidings
+1.) Mine a new block is same as adding a new block. 
+I can add a block either by  starting a miner or by running the following command 
+./kriscoin-cli generate 1
+
+=====
+See how many blocks i have added 
+=====
+
+
+=======
+
+
+let's first Revise Shit 
+
+The plan is 
+
+
